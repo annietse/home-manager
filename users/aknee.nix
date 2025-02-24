@@ -6,7 +6,14 @@
   home.homeDirectory = "/home/aknee";
 
 
-  home.packages = [
+  home.packages = with pkgs; [
+    # web dev
+    nodejs_23
+    pnpm
+    typescript
+    typescript-language-server
+    prettierd
+    nodePackages_latest.prettier
   ];
 
   home.file = {
