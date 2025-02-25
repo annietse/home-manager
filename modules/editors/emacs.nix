@@ -8,6 +8,11 @@
 with lib;
 
 let
+  iosevkaAile = pkgs.fetchzip {
+    url = "https://github.com/be5invis/Iosevka/releases/download/v31.6.0/PkgTTC-IosevkaAile-31.6.0.zip";
+    sha256 = "sha256-nHDisG2njkb2+XX7UUCUQVbVCPUQW3zdgwmPqR5wYK4=";
+    stripRoot = false;
+  };
   cfg = config.modules.editors.emacs;
 in
 # doomCommit = "424b7af45fa2c96bbee9b06f33c6cd0fc13412ac";
@@ -46,6 +51,17 @@ in
       emacsPackages.pdf-tools
 
       # requirements
+      jetbrains-mono
+      nerd-fonts.jetbrains-mono
+      # Ioveska Aile
+      (stdenv.mkDerivation {
+        name = "iosevka-aile";
+        src = iosevkaAile;
+        installPhase = ''
+          mkdir -p $out/share/fonts/truetype
+          cp *.ttc $out/share/fonts/truetype/
+        '';
+      })
       libtool
       ripgrep
       fd
