@@ -25,7 +25,7 @@ in
     # TODO clone doom in .config?
     services.emacs = {
       enable = true;
-      package = pkgs.emacs29-pgtk;
+      package = pkgs.emacs;
       defaultEditor = true;
       startWithUserSession = "graphical";
       client = {
@@ -44,13 +44,15 @@ in
     };
 
     home.packages = with pkgs; [
-      emacs29-pgtk
+      emacs
       emacsPackages.vterm
       emacsPackages.python
       emacsPackages.emacsql
       emacsPackages.pdf-tools
 
       # requirements
+      aspell
+      aspellDicts.en
       jetbrains-mono
       nerd-fonts.jetbrains-mono
       # Ioveska Aile
