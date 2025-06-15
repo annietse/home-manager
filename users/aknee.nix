@@ -8,12 +8,15 @@
 
   home.packages = with pkgs; [
     # web dev
-    nodejs_23
+    nodejs_24
     pnpm
     typescript
     typescript-language-server
     prettierd
     nodePackages_latest.prettier
+
+    deno
+    rustup
   ];
 
   home.file = {

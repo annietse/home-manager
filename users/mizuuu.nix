@@ -5,18 +5,25 @@
   home.username = "mizuuu";
   home.homeDirectory = "/home/mizuuu";
 
-
   home.packages = with pkgs; [
     # web dev
-    nodejs_23
+    nodejs_24
     pnpm
     typescript
     typescript-language-server
     prettierd
     nodePackages_latest.prettier
+
+    turbo
+    deno
+    rustup
   ];
 
   home.file = {
+  };
+
+  home.sessionVariables = {
+    DISPLAY = "172.29.64.1:0.0";
   };
 
   programs.nh = {
