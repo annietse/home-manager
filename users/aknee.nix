@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
     # web dev
-    nodejs_24
+    nodePackages.nodejs
     pnpm
     typescript
     typescript-language-server

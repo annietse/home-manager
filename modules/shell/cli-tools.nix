@@ -44,6 +44,22 @@ in
       };
       syntaxHighlighting.enable = true;
       dotDir = ".config/zsh";
+      initExtra = ''
+        # Key bindings for Home and End keys
+        bindkey "^[[H" beginning-of-line     # Home key
+        bindkey "^[[F" end-of-line           # End key
+        bindkey "^[[1~" beginning-of-line    # Home key (alternative)
+        bindkey "^[[4~" end-of-line          # End key (alternative)
+
+        # For different terminal emulators
+        bindkey "^[OH" beginning-of-line     # Home key (xterm)
+        bindkey "^[OF" end-of-line           # End key (xterm)
+
+        # Additional useful bindings
+        bindkey "^[[3~" delete-char          # Delete key
+        bindkey "^[[5~" history-search-backward  # Page Up
+        bindkey "^[[6~" history-search-forward   # Page Down
+      '';
     };
 
     # Git
@@ -70,6 +86,23 @@ in
         else
           { }
       );
+    # git aliases
+    programs.zsh.shellAliases = {
+      ga = "git add .";
+      gc = "git commit -m";
+      gp = "git push";
+      gfp = "git push --force-with-lease";
+      gf = "git pull";
+      grc = "git rebase --continue";
+      gra = "git rebase --abort";
+      grs = "git reset --soft HEAD~1";
+      grh = "git reset --hard HEAD~1";
+      gcl = "git clone";
+      gco = "git checkout";
+      gs = "git status";
+      gtc = "git tag -a -m";
+      gtp = "git push --tags";
+    };
 
     # eza
     programs.eza = {

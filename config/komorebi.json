@@ -4,10 +4,14 @@
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
   "default_workspace_padding": 0,
-  "default_container_padding": -10,
+  "default_container_padding": -1,
+  "mouse_follows_focus": false,
   "border": true,
   "border_width": 2,
   "border_offset": -1,
+  "animation": {
+    "enabled": false
+  },
   "theme": {
     "palette": "Base16",
     "name": "Ashes",
@@ -15,12 +19,22 @@
     "bar_accent": "Base0D"
   },
   "stackbar": {
-    "height": 40,
-    "mode": "OnStack",
+    "height": 25,
+    "mode": "Never",
     "tabs": {
-      "width": 300
+      "width": 300,
+      "focused_text": "#00e9e9",
+      "unfocused_text": "#b3b3b3",
+      "background": "#141414"
     }
   },
+  "ignore_rules": [
+    {
+      "kind": "Title",
+      "id": "ClickUp Command Bar",
+      "matching_strategy": "Equals"
+    }
+  ],
   "monitors": [
     {
       "workspaces": [
@@ -62,6 +76,10 @@
         },
         {
           "name": "10",
+          "layout": "BSP"
+        },
+        {
+          "name": "Special",
           "layout": "BSP"
         }
       ]
