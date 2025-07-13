@@ -52,6 +52,14 @@
     };
   };
 
+  nixpkgs = { 
+    overlays = [
+      (final: prev: {
+        nvchad = inputs.nix4nvchad.packages."${pkgs.system}".nvchad;
+      })
+    ];
+  };
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
@@ -69,7 +77,7 @@
   #  /etc/profiles/per-user/aknee/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # ------- DO NOT CHANGE ---------

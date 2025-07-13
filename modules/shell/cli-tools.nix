@@ -149,6 +149,25 @@ in
     programs.gpg = {
       enable = true;
     };
+    services.gpg-agent = {
+      enable = true;
+      # Set pinentry program
+      # pinentry.package = pkgs.pinentry-gtk2;
+      # Alternative options:
+      # pinentry.package = pkgs.pinentry-curses;   # For terminal
+      # pinentry.package = pkgs.pinentry-qt;      # For Qt desktop
+      pinentry.package = pkgs.pinentry-gnome3;  # For GNOME
+      # Optional: Enable SSH support
+      enableSshSupport = true;
+      # Optional: Set default cache TTL
+      defaultCacheTtl = 3600;
+      maxCacheTtl = 86400;
+      # Optional: Extra config
+      extraConfig = ''
+        allow-emacs-pinentry
+        allow-loopback-pinentry
+      '';
+    };
 
     # btop
     programs.btop = {
@@ -171,6 +190,7 @@ in
       bat
       gnumake
       cmake
+      nvchad
 
       pinentry-gtk2
     ];

@@ -26,7 +26,6 @@ in
     services.emacs = {
       enable = true;
       package = pkgs.emacs;
-      defaultEditor = true;
       startWithUserSession = "graphical";
       client = {
         enable = true;
