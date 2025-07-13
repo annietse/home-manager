@@ -104,6 +104,74 @@ in
       gtp = "git push --tags";
     };
 
+    # tmux
+    programs.tmux = {
+      enable = true;
+      prefix = "C-s";
+      secureSocket = false;
+      baseIndex = 1;
+      plugins = with pkgs; [
+        tmuxPlugins.cpu
+        tmuxPlugins.battery
+        {
+          plugin = tmuxPlugins.catppuccin;
+          extraConfig = ''
+            set -g default-terminal "tmux-256color"
+
+            # Configure the catppuccin plugin
+            set -g @catppuccin_flavor "mocha"
+            set -g @catppuccin_window_status_style "rounded"
+
+            # Load catppuccin
+            # run ~/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux
+            # For TPM, instead use `run ~/.tmux/plugins/tmux/catppuccin.tmux`
+            run ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
+            run ${pkgs.tmuxPlugins.battery}/share/tmux-plugins/battery/battery.tmux
+
+            # Configure CPU plugin
+            set -g @cpu_percentage_format "%3.0f%%"
+
+            # Configure battery plugin
+            set -g @batt_icon_status_charging "⚡"
+            set -g @batt_icon_status_discharging "🔋"
+
+            # Make the status line pretty and add some modules
+            set -g status-right-length 100
+            set -g status-left-length 100
+            set -g status-left ""
+            set -g status-right ""
+            set -agF status-right "#{E:@catppuccin_status_cpu}"
+            set -ag status-right "#{E:@catppuccin_status_session}"
+            set -ag status-right "#{E:@catppuccin_status_uptime}"
+            set -agF status-right "#{E:@catppuccin_status_battery}"
+          '';
+        }
+      ];
+      mouse = true;
+      extraConfig = ''
+        set -g default-terminal "xterm-256color"
+        set -ga terminal-overrides ",*256col*:Tc"
+        set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
+        set-environment -g COLORTERM "truecolor"
+
+        unbind r
+        bind r source-file ~/.config/tmux/tmux.conf
+
+        bind-key h select-pane -L
+        bind-key j select-pane -D
+        bind-key k select-pane -U
+        bind-key l select-pane -R
+
+        bind-key s split-window -v
+        bind-key v split-window -h
+
+        bind-key [ next-window
+        bind-key ] next-window
+
+        set-option -g status-position top
+      '';
+    };
+
     # eza
     programs.eza = {
       enable = true;
@@ -156,7 +224,7 @@ in
       # Alternative options:
       # pinentry.package = pkgs.pinentry-curses;   # For terminal
       # pinentry.package = pkgs.pinentry-qt;      # For Qt desktop
-      pinentry.package = pkgs.pinentry-gnome3;  # For GNOME
+      pinentry.package = pkgs.pinentry-gnome3; # For GNOME
       # Optional: Enable SSH support
       enableSshSupport = true;
       # Optional: Set default cache TTL
