@@ -44,7 +44,7 @@ in
       };
       syntaxHighlighting.enable = true;
       dotDir = ".config/zsh";
-      initExtra = ''
+      initContent = ''
         # Key bindings for Home and End keys
         bindkey "^[[H" beginning-of-line     # Home key
         bindkey "^[[F" end-of-line           # End key
@@ -171,6 +171,8 @@ in
       bat
       gnumake
       cmake
+
+      pinentry-gtk2
     ];
   };
 }
