@@ -14,12 +14,19 @@
     typescript-language-server
     prettierd
     nodePackages_latest.prettier
+    vercel
 
+    turbo
     deno
     rustup
   ];
 
   home.file = {
+  };
+
+  # This is for VCXSRV on Windows.
+  home.sessionVariables = {
+    DISPLAY = "172.29.64.1:0.0";
   };
 
   programs.nh = {

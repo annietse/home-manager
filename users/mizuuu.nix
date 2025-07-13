@@ -1,13 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [ ../modules ];
   home.username = "mizuuu";
   home.homeDirectory = "/home/mizuuu";
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "claude-code"
+  ];
+
   home.packages = with pkgs; [
     # web dev
-    nodejs_24
+    nodePackages.nodejs
     pnpm
     typescript
     typescript-language-server
@@ -17,6 +21,10 @@
     turbo
     deno
     rustup
+    nodePackages.vercel
+    gemini-cli
+    claude-code
+    opencode
   ];
 
   home.file = {
