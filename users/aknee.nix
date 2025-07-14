@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [ ../modules ];
@@ -14,7 +14,7 @@
     typescript-language-server
     prettierd
     nodePackages_latest.prettier
-    vercel
+    nodePackages.vercel
 
     turbo
     deno
