@@ -21,6 +21,12 @@
     rustup
   ];
 
+  # web dev pnpm supremacy
+  programs.zsh.shellAliases = {
+    npm = "pnpm";
+    npx = "pnpm dlx";
+  };
+
   home.file = {
   };
 
