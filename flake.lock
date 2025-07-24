@@ -44,7 +44,9 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nvchad-starter": "nvchad-starter"
+        "nvchad-starter": [
+          "nvchad-starter"
+        ]
       },
       "locked": {
         "lastModified": 1752380457,
@@ -79,23 +81,6 @@
     "nvchad-starter": {
       "flake": false,
       "locked": {
-        "lastModified": 1750439787,
-        "narHash": "sha256-+UcDn0rTYKlaPi0ybUhYtsdPGPqKChDIPtafjf/in8g=",
-        "owner": "NvChad",
-        "repo": "starter",
-        "rev": "5c656910f058ecdc6753c6a4f39b64afce89a0e6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NvChad",
-        "ref": "main",
-        "repo": "starter",
-        "type": "github"
-      }
-    },
-    "nvchad-starter_2": {
-      "flake": false,
-      "locked": {
         "lastModified": 1752432701,
         "narHash": "sha256-+UcDn0rTYKlaPi0ybUhYtsdPGPqKChDIPtafjf/in8g=",
         "owner": "hegde-atri",
@@ -114,7 +99,7 @@
         "home-manager": "home-manager",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs",
-        "nvchad-starter": "nvchad-starter_2"
+        "nvchad-starter": "nvchad-starter"
       }
     },
     "systems": {
