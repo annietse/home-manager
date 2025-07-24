@@ -23,6 +23,8 @@ UpdateCurrentWorkspace(workspace) {
 !q::Komorebic("close")
 !m::Komorebic("minimize")
 
+!'::Run("C:\Program Files\Alacritty\alacritty.exe")
+
 ; reload config
 !+o::
 {
